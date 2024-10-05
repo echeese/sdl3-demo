@@ -15,7 +15,10 @@ add_executable(MySDLApp WIN32 main.cpp)
 
 if(EMSCRIPTEN)
   set(CMAKE_EXECUTABLE_SUFFIX ".html")
+  set_property(TARGET MySDLApp PROPERTY LINK_DEPENDS ${PROJECT_SOURCE_DIR}/shell.html)
   target_link_options(MySDLApp PRIVATE "SHELL:--shell-file ${PROJECT_SOURCE_DIR}/shell.html")
+  target_link_options(MySDLApp PRIVATE "SHELL:-sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2")
+  target_link_options(MySDLApp PRIVATE "SHELL:-sENVIRONMENT=web")
 endif()
 
 target_link_libraries(MySDLApp PRIVATE SDL3::SDL3)
