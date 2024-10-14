@@ -20,7 +20,12 @@
     </style>
   </head>
   <body>
-    <canvas class="canvas" id="canvas"></canvas>
+    <canvas
+      class="canvas"
+      id="canvas"
+      oncontextmenu="event.preventDefault()"
+      tabindex="-1"
+    ></canvas>
     {{{ SCRIPT }}}
   </body>
 </html>
